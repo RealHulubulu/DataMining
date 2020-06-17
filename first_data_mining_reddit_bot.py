@@ -20,8 +20,8 @@ bot = praw.Reddit(user_agent='mine_post_data v0.1',
 
 # these are the inputs
 subreddit = bot.subreddit('all')
-word_to_count = "python"
-how_long_to_count = 180
+word_to_count = "the"
+how_long_to_count = 30
 
 
 count_python_submissions = 0
@@ -35,6 +35,7 @@ else:
        posts_read = posts_read.split("\n")
        posts_read = list(filter(None, posts_read))
        count_python_submissions = posts_read[0]
+       posts_read.pop(0)
        print(count_python_submissions)
        
 if not os.path.isfile("comments_read.txt"):
@@ -45,6 +46,7 @@ else:
        comments_read = comments_read.split("\n")
        comments_read = list(filter(None, comments_read))
        count_python_comments = comments_read[0]
+       comments_read.pop(0)
        print(count_python_comments)
        
 # subreddit = bot.subreddit('learnpython')
@@ -60,7 +62,7 @@ for submission, comment in zip(submissions, comments):
         if re.search(word_to_count, submission.title, re.IGNORECASE):
             print("\nnew submission with python: ", submission.title)
             
-            wordlist = submission.title.split
+            wordlist = submission.title.split()
             for word in wordlist:
                 if word.lower() == word_to_count:
                     count_python_submissions += 1
@@ -71,7 +73,7 @@ for submission, comment in zip(submissions, comments):
         if re.search(word_to_count, comment.body, re.IGNORECASE):  
             print("\nnew comment with python: ", comment.body)
             
-            wordlist = comment.body.split
+            wordlist = comment.body.split()
             for word in wordlist:
                 if word.lower() == word_to_count:
                     count_python_comments += 1
