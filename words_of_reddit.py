@@ -77,7 +77,7 @@ else:
        
        
 # subreddit = bot.subreddit('learnpython')
-subreddit = bot.subreddit('all')
+# subreddit = bot.subreddit('all')
 
 submissions = subreddit.stream.submissions(skip_existing=True) #pulls last 100
 comments = subreddit.stream.comments(skip_existing=True) #pulls last 100
@@ -171,13 +171,5 @@ now = str(datetime.now())
 with open("log.txt", "a") as f:
     f.write(", " + now)
 
-        
-# with open("words_in_reddit.txt", "w") as f:
-#     f.write(str(posts_read))
-#     f.write("\n")
-#     f.write(str(comments_read))
-#     f.write("\n")
-#     for word_count in new_pairs_list:
-#         f.write(str(word_count))
-#         f.write("\n")
+
  
